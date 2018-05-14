@@ -5,6 +5,7 @@ import requests
 Episode =  namedtuple('Episode', 'title link pubdate show_id')
 episode_data = {}
 
+
 def download_info():
     url = 'https://talkpython.fm/episodes/rss'
 
@@ -21,9 +22,10 @@ def download_info():
             item.find('title').text,
             item.find('link').text,
             item.find('pubDate').text,
-            episode_count - idx -1
+            episode_count - idx - 1
         )
         episode_data[episode.show_id] = episode
+
 
 def get_episode(show_id: int) -> Episode:
     return episode_data.get(show_id)
