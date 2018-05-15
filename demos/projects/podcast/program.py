@@ -1,5 +1,5 @@
 import service
-
+import random
 
 def main():
     show_header()
@@ -15,7 +15,11 @@ def show_header():
 
 
 def display_results():
-    for show_id in range(120, 141):
+
+    start = random.randint(90, 110)
+    end = random.randint(130, service.get_latest_show_id()+1)
+
+    for show_id in range(start, end):
         info = service.get_episode(show_id)
         print("{}. {}".format(info.show_id, info.title))
 
